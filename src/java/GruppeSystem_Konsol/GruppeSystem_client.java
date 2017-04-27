@@ -25,7 +25,7 @@ public class GruppeSystem_client {
     
    
      public ServerInterface lol() throws MalformedURLException {
-       URL url = new URL("http://ubuntu4.javabog.dk:54694");
+       URL url = new URL("http://[::]:8080/server");
         QName qname = new QName("http://Server/", "GruppeSysImplService");
         Service service = Service.create(url, qname);
     ServerInterface ISrv = service.getPort(ServerInterface.class);
