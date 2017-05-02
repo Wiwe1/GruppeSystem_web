@@ -4,10 +4,10 @@
     Author     : djw
 --%>
 
-<%@page import="Data.Aftale"%>
-<%@page import="Data.Aftale"%>
-<%@page import="Data.Opgave"%>
-<%@page import="Data.Projekt"%>
+<%@page import="DTO.Aftale"%>
+<%@page import="DTO.Aftale"%>
+<%@page import="DTO.Opgave"%>
+<%@page import="DTO.Projekt"%>
 <%@page import="java.util.List"%>
 <%@page import="java.util.List"%>
 
@@ -127,6 +127,28 @@ out.print("banan");
                                 String grpname= request.getParameter("groupname");
                                 
                                 Iserv.CreateProjekt(new Projekt(proid,proname,prondesc,grpname,adid), stdnummer);
+
+                        %>
+        </form>
+        
+        <form method="get" action="groupting.jsp">
+        
+
+            aftaledate: <input type="text" name="tidspunkt"><br>
+            aftalelokation: <input type="text" name="lokation"><br>
+            aftaleid: <input type="text" name="id"><br>
+            aftalename: <input type="text" name="navn"><br>
+            aftaledesc: <input type="text" name="aftaledesc"><br>
+            <button type="submit" onclick="onButton(text.toString()); onButton(aftaledate.toString(),aftalelokation.toString(),aftaleid.toString(),aftalename.toString(), aftaledesc.toString())
+                    " id="create aftale" name="login">Login</button>
+                    <%          String date = request.getParameter("tidspunkt");
+                                String lokation = request.getParameter("lokation");
+                                String aftid = request.getParameter("id");
+                                int aftaleid = Integer.parseInt(aftid);
+                                String aftalenavn = request.getParameter("navn");
+                                String desc = request.getParameter("aftaledesc");
+                               
+                                Iserv.CreateAftale(new Aftale(aftaleid, aftalenavn, desc, date, lokation), stdnummer);
 
                         %>
         </form>
