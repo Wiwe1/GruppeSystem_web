@@ -4,15 +4,15 @@
     Author     : djw
 --%>
 
+<%@page import="java.util.ArrayList"%>
 <%@page import="DTO.Aftale"%>
 <%@page import="DTO.Aftale"%>
 <%@page import="DTO.Opgave"%>
 <%@page import="DTO.Projekt"%>
 <%@page import="java.util.List"%>
-<%@page import="java.util.List"%>
+<%@page import="java.sql.Date"%>
 
-<%@page import="GruppeSystem_Konsol.GruppeSystem_client"%>
-<%@page import="Server.ServerInterface"%>
+<%@page import="transport.ServerInterface"%>
 
 <%@page import="connector.Connector"%>
 <%@page import="java.sql.SQLException"%>
@@ -39,7 +39,7 @@ out.print("banan");
       
          <%      
             
-            ServerInterface Iserv = new GruppeSystem_client().lol();
+            ServerInterface Iserv = new transport.Client().lol();
               String usrname = request.getParameter("user");
                 List<Projekt> projlist = null;
                 int   stdnummer = Integer.parseInt(usrname.substring(1));
@@ -68,14 +68,17 @@ out.print("banan");
               
             
                     
-              <%
+              <%    List<Opgave> opglist = new ArrayList<Opgave>();
                     for(Projekt p:projlist){
-                    
-                            List<Opgave> opglist = Iserv.getOpgaver(p.getId(), stdnummer);
-                            
-                            
-                            for(Opgave opg:opglist){
+                            List<Opgave> ol = new ArrayList<Opgave>();
+                            try{
+                            ol = Iserv.getOpgaver(p.getId(), stdnummer);
+                            }catch(Exception e){
                                 
+                            }
+                            
+                            for(Opgave opg: ol){
+                                opglist.add(opg);
                                 
                   %>
                
@@ -86,11 +89,15 @@ out.print("banan");
               
                  
                                 
-                            }
+                            
                            
-<%
-                              List<Aftale> aflist = Iserv.getAftaler(p.getId(), stdnummer);
-
+<%                          
+                            }
+                            List<Aftale> aflist = null;
+                            try{
+                            aflist = Iserv.getAftaler(p.getId(), stdnummer);
+                            }catch(Exception e){
+                            }
                                  for(Aftale a: aflist){
                   %>                
                                       <td><% out.print(a.getNavn()); %></td>
@@ -125,8 +132,11 @@ out.print("banan");
                                 String proname = request.getParameter("projectname");
                                 String prondesc = request.getParameter("projectdesc");
                                 String grpname= request.getParameter("groupname");
-                                
+                                try{
                                 Iserv.CreateProjekt(new Projekt(proid,proname,prondesc,grpname,adid), stdnummer);
+                                }catch(Exception e){
+                                    
+                                }
 
                         %>
         </form>
@@ -141,15 +151,17 @@ out.print("banan");
             aftaledesc: <input type="text" name="aftaledesc"><br>
             <button type="submit" onclick="onButton(text.toString()); onButton(aftaledate.toString(),aftalelokation.toString(),aftaleid.toString(),aftalename.toString(), aftaledesc.toString())
                     " id="create aftale" name="login">Login</button>
-                    <%          String date = request.getParameter("tidspunkt");
+                    <%          //String date = request.getParameter("tidspunkt");
                                 String lokation = request.getParameter("lokation");
                                 String aftid = request.getParameter("id");
                                 int aftaleid = Integer.parseInt(aftid);
                                 String aftalenavn = request.getParameter("navn");
                                 String desc = request.getParameter("aftaledesc");
-                               
-                                Iserv.CreateAftale(new Aftale(aftaleid, aftalenavn, desc, date, lokation), stdnummer);
-
+                                try{
+                                Iserv.CreateAftale(new Aftale(aftaleid, aftalenavn, desc, new Date(1,1,1), lokation), stdnummer, 1000);
+                                }catch(Exception e){
+                                    
+                                }
                         %>
         </form>
       

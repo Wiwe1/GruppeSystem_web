@@ -4,9 +4,8 @@
     Author     : djw
 --%>
 
-<%@page import="GruppeSystem_Konsol.GruppeSystem_client"%>
-<%@page import="Server.ServerInterface"%>
-<%@page import="Server.ServerInterface"%>
+<%@page import="transport.Client"%>
+<%@page import="transport.ServerInterface"%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -20,7 +19,7 @@
              String usrname ="";
             String pwd = "";
                 
-         ServerInterface Iserv = new GruppeSystem_client().lol();
+         ServerInterface Iserv = new transport.Client().lol();
            if(request.getParameter("login")!=null){
             usrname =request.getParameter("user");
             pwd = request.getParameter("password");
@@ -30,7 +29,7 @@
             out.println( Iserv.login(stdnummer,pwd));
           if( Iserv.login(stdnummer,pwd)!=null) {
       session.setAttribute("login","true");               
-        String redirectURL ="test.jsp";
+        String redirectURL ="groupting.jsp";
         response.sendRedirect(redirectURL);
   
         }

@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import connector.Connector;
-import Data.Bruger;
+import DTO.Bruger;
 
 
 /**

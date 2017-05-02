@@ -6,8 +6,7 @@
 package DAO;
 
 import DALException.DALException;
-import Data.Aftale;
-import Data.Bruger;
+import DTO.Aftale;
 import connector.Connector;
 import java.sql.ResultSet;
 import java.sql.SQLException;

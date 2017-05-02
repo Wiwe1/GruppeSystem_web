@@ -3,23 +3,26 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Server;
+package transport;
 
 import DALException.DALException;
 
 
 import java.net.MalformedURLException;
 import java.util.List;
-import Data.Aftale;
-import Data.Bruger;
-import Data.Opgave;
-import Data.Projekt;
+import DTO.Aftale;
+import DTO.Bruger;
+import DTO.Opgave;
+import DTO.Projekt;
 import javax.jws.WebMethod;
+import javax.jws.WebService;
+
 
 /**
  *
  * @author djw
  */
+   @WebService     
 public interface ServerInterface {
     
      @WebMethod public Bruger login(int studienummer, String password)  throws MalformedURLException;

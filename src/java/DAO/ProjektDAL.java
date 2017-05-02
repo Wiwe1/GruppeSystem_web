@@ -5,9 +5,9 @@
  */
 package DAO;
 
-import Data.Projekt;
+import DTO.Projekt;
 import DALException.DALException;
-import Data.Aftale;
+import DTO.Aftale;
 import connector.Connector;
 import java.sql.ResultSet;
 import java.sql.SQLException;
