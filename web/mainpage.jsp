@@ -65,12 +65,10 @@
                     
                     
                     List<Aftale> al = new ArrayList<Aftale>();
-                    al.add(new Aftale(1, "gg", "dræb mig", new Date(1,1,1), "din mor"));
-                    al.add(new Aftale(1, "gg", "dræb mig", new Date(1,1,1), "din mor"));
-                    al.add(new Aftale(1, "gg", "dræb mig", new Date(1,1,1), "din mor"));
+                  
                     
                     try{
-                        //al = Iserv.getAftaler(p.getId(), stdnummer);
+                        al = Iserv.getAftaler(p.getId(), stdnummer);
                     }catch(Exception e){
                     }
                             
@@ -184,7 +182,7 @@
                                 String aftalenavn = request.getParameter("navn");
                                 String desc = request.getParameter("aftaledesc");
                                 try{
-                                Iserv.CreateAftale(new Aftale(aftaleid, aftalenavn, desc, new Date(1,1,1), lokation), stdnummer, 1000);
+                                Iserv.CreateAftale(new Aftale(aftaleid, aftalenavn, desc, "hej", lokation), stdnummer, 1000);
                                 }catch(Exception e){
                                     
                                 }
