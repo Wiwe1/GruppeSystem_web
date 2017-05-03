@@ -163,12 +163,11 @@
         </form>
                         <br><br>
                         Opret en aftale her:
-                        <form method="get" action="groupting.jsp">
+                        <form method="get">
         
 
             aftaledate: <input type="text" name="tidspunkt"><br>
             aftalelokation: <input type="text" name="lokation"><br>
-            aftaleid: <input type="text" name="id"><br>
             aftalename: <input type="text" name="navn"><br>
             aftaledesc: <input type="text" name="aftaledesc"><br>
             <button type="submit" onclick="onButton(text.toString()); onButton(aftaledate.toString(),aftalelokation.toString(),aftaleid.toString(),aftalename.toString(), aftaledesc.toString())
@@ -177,40 +176,35 @@
                         
                                 if(request.getParameter("opretAft") != null){
                                 String lokation = request.getParameter("lokation");
-                                String aftid = request.getParameter("id");
-                                int aftaleid = Integer.parseInt(aftid);
                                 String aftalenavn = request.getParameter("navn");
                                 String desc = request.getParameter("aftaledesc");
                                 try{
-                                Iserv.CreateAftale(new Aftale(aftaleid, aftalenavn, desc, "hej", lokation), stdnummer, 1000);
+                                Iserv.CreateAftale(new Aftale(1, aftalenavn, desc, "hej", lokation), stdnummer, 1000);
                                 }catch(Exception e){
-                                    
+                                    out.println("IKKE OPRETTET AF ÅRSAGER");
                                 }
                                 }
                         %>
         </form>
         <br><br>
         Opret en opgave her:
-        <form method="get" action="groupting.jsp">
+        <form method="get">
         
 
             
-            opgaveid: <input type="text" name="opgid"><br>
             opgavename: <input type="text" name="opgnavn"><br>
             opgavedesc: <input type="text" name="opgdesc"><br>
             <button type="submit" onclick="onButton(opgid.toString()); onButton(opgid.toString(),opgnavn.toString(),opgdesc.toString())
-                    " id="create opgave" name="opretOpg">Opret Opgave/button>
+                    " id="create opgave" name="opretOpg">Opret Opgave</button>
                     <%          
                                 if(request.getParameter("opretOpg") != null){
-                                String opgnavn = request.getParameter("opgnavn");
-                                String opgdesc = request.getParameter("opgdesc");
-                                String ids = request.getParameter("opgid");
-                                int opgid = Integer.parseInt(ids);
-                                try{
-                                Iserv.CreateOpgave(new Opgave(opgid, opgnavn, opgdesc), stdnummer, 1000);
-                                }catch(Exception e){
-                                    
-                                }
+                                    String opgnavn = request.getParameter("opgnavn");
+                                    String opgdesc = request.getParameter("opgdesc");
+                                    try{
+                                        Iserv.CreateOpgave(new Opgave(1, opgnavn, opgdesc), stdnummer, 1000);
+                                    }catch(Exception e){
+                                        out.println("IKKE OPRETTET AF ÅRSAGER");
+                                    }
                                 }
                         %>
         </form> 
