@@ -5,12 +5,15 @@
  */
 package DTO;
 
+import java.io.Serializable;
+
 /**
  *
  * @author elbosso
  */
-public class Projekt {
+public class Projekt implements  Serializable{
 
+    private static final long serialVersionUID = 12345;
     private int id;
     private String navn;
     private String desc;
@@ -25,7 +28,7 @@ public class Projekt {
         this.gruppeNavn = gruppeNavn;
         this.adminid = adminid;
     }
-    
+ 
     public Projekt(){
         this.id = 1;
         this.navn = "test";
@@ -33,7 +36,7 @@ public class Projekt {
         this.gruppeNavn = "testloltest";
         this.adminid = 154694;
     }
-
+    
     public int getId() {
         return id;
     }

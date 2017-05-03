@@ -93,7 +93,7 @@ out.print("banan");
                             
                            
 <%                          
-        <form method="get" action="L
+        <form method="get" action="L"
                             }
                             List<Aftale> aflist = new ArrayList<Aftale>();
                             

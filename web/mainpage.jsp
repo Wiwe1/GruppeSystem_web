@@ -59,15 +59,15 @@
                     
                     
                     try{
-                        //ol = Iserv.getOpgaver(p.getId(), stdnummer);
+                        ol = Iserv.getOpgaver(p.getId(), stdnummer);
                     }catch(Exception e){
                     }
                     
                     
                     List<Aftale> al = new ArrayList<Aftale>();
-                    al.add(new Aftale(1, "gg", "dræb mig", new Date(1), "din mor"));
-                    al.add(new Aftale(1, "gg", "dræb mig", new Date(1), "din mor"));
-                    al.add(new Aftale(1, "gg", "dræb mig", new Date(1), "din mor"));
+                    al.add(new Aftale(1, "gg", "dræb mig", new Date(1,1,1), "din mor"));
+                    al.add(new Aftale(1, "gg", "dræb mig", new Date(1,1,1), "din mor"));
+                    al.add(new Aftale(1, "gg", "dræb mig", new Date(1,1,1), "din mor"));
                     
                     try{
                         //al = Iserv.getAftaler(p.getId(), stdnummer);

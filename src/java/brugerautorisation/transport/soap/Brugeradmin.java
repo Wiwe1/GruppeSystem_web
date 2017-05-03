@@ -1,5 +1,5 @@
 package brugerautorisation.transport.soap;
-import brugerautorisation.data.Bruger;
+import brugerautorisation.data.BrugerJa;
 import javax.jws.WebMethod;
 import javax.jws.WebService;
 @WebService
@@ -9,13 +9,13 @@ public interface Brugeradmin
 	 * Henter alle en brugers data
 	 * @return et Bruger-objekt med alle data
 	 */
-	@WebMethod Bruger hentBruger(String brugernavn, String adgangskode);
+	@WebMethod BrugerJa hentBruger(String brugernavn, String adgangskode);
 
 	/**
 	 * Ændrer en brugers adgangskode
 	 * @return et Bruger-objekt med alle data
 	 */
-	@WebMethod Bruger ændrAdgangskode(String brugernavn, String adgangskode, String nyAdgangskode);
+	@WebMethod BrugerJa ændrAdgangskode(String brugernavn, String adgangskode, String nyAdgangskode);
 
 	/**
 	 * Sender en email til en bruger
@@ -24,9 +24,9 @@ public interface Brugeradmin
 	 * @param tekst Brødteksten - teksten 'Sendt fra xxxx ' bliver tilføjet  i mailen
 	 * @throws java.rmi.RemoteException
 	 */
-//	@WebMethod void sendEmail(String brugernavn, String adgangskode, String emne, String tekst);
+	@WebMethod void sendEmail(String brugernavn, String adgangskode, String emne, String tekst);
 
-	//@WebMethod void sendGlemtAdgangskodeEmail(String brugernavn, String følgetekst);
+	@WebMethod void sendGlemtAdgangskodeEmail(String brugernavn, String følgetekst);
 
 	/**
 	 * Giver mulighed for at gemme et ekstra felt for brugeren. Det kunne f.eks. være at en Galgeleg-backend ønskede at gemme hvor mange point brugeren har, til en highscoreliste
