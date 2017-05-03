@@ -42,7 +42,7 @@ out.print("banan");
             ServerInterface Iserv = new transport.Client().lol();
               String usrname = request.getParameter("user");
                 List<Projekt> projlist = null;
-                int   stdnummer = Integer.parseInt(usrname.substring(1));
+                int   stdnummer = 154694;    //Integer.parseInt(usrname.substring(1));
                 try{
                  projlist= Iserv.getProjekter(stdnummer);
 
@@ -60,6 +60,7 @@ out.print("banan");
                  <td><% out.print(p.getNavn()); %></td>
                  <td><% out.print(p.getKalender()); %></td>
                       </tr>
+                      
                        <%
             
  }
@@ -92,8 +93,10 @@ out.print("banan");
                             
                            
 <%                          
+        <form method="get" action="L
                             }
-                            List<Aftale> aflist = null;
+                            List<Aftale> aflist = new ArrayList<Aftale>();
+                            
                             try{
                             aflist = Iserv.getAftaler(p.getId(), stdnummer);
                             }catch(Exception e){
@@ -164,6 +167,28 @@ out.print("banan");
                                 }
                         %>
         </form>
-      
+        
+        <form method="get" action="groupting.jsp">
+        
+
+            
+            opgaveid: <input type="text" name="opgid"><br>
+            opgavename: <input type="text" name="opgnavn"><br>
+            opgavedesc: <input type="text" name="opgdesc"><br>
+            <button type="submit" onclick="onButton(opgid.toString()); onButton(opgid.toString(),opgnavn.toString(),opgdesc.toString())
+                    " id="create opgave" name="login">Login</button>
+                    <%          
+                                String opgnavn = request.getParameter("opgnavn");
+                                String opgdesc = request.getParameter("opgdesc");
+                                String ids = request.getParameter("opgid");
+                                int opgid = Integer.parseInt(ids);
+                                try{
+                                Iserv.CreateOpgave(new Opgave(opgid, opgnavn, opgdesc), stdnummer, 1000);
+                                }catch(Exception e){
+                                    
+                                }
+                        %>
+        </form>
+
 </body>
 </html>

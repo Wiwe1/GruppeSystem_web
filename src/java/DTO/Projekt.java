@@ -25,6 +25,14 @@ public class Projekt {
         this.gruppeNavn = gruppeNavn;
         this.adminid = adminid;
     }
+    
+    public Projekt(){
+        this.id = 1;
+        this.navn = "test";
+        this.desc = "testdesc";
+        this.gruppeNavn = "testloltest";
+        this.adminid = 154694;
+    }
 
     public int getId() {
         return id;

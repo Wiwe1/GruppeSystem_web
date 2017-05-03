@@ -7,6 +7,7 @@ package DAO;
 
 import DALException.DALException;
 import DTO.Aftale;
+import DTO.Bruger;
 import connector.Connector;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -47,8 +48,8 @@ public class AftaleDAL {
         {
 		Connector.doUpdate
 		(
-			"INSERT INTO aftale(id, projektid, aftalename, aftaledesc, tidspunkt, lokation) VALUES (?,?,?,?,?,?)",
-				a.getId(), projektid, a.getNavn(), a.getBeskrivelse(), a.getTidspunkt(), a.getLokation()
+			"INSERT INTO aftale(projektid, aftalename, aftaledesc, tidspunkt, lokation) VALUES (?,?,?,?,?)",
+				projektid, a.getNavn(), a.getBeskrivelse(), a.getTidspunkt(), a.getLokation()
 				);
 	}
         

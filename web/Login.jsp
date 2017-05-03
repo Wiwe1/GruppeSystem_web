@@ -29,7 +29,7 @@
             out.println( Iserv.login(stdnummer,pwd));
           if( Iserv.login(stdnummer,pwd)!=null) {
       session.setAttribute("login","true");               
-        String redirectURL ="groupting.jsp";
+        String redirectURL ="mainpage.jsp";
         response.sendRedirect(redirectURL);
   
         }
