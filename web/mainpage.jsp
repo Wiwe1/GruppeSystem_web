@@ -417,6 +417,34 @@ mport="DTO.Aftale"%>
             
                     
               
-              
+                                %>
+        </form> 
+        prodelid: <input type="text" name="prodelid">
+         
+        Afid: <input type="text" name="Afid">
+        <button type="submit" onclick="onButton(prodelid.toString(),.toString())
+                    " id="Del aftale" name="Delaftale">Delete Aftale</button>
+        
+        <form>
+             <%          
+                                if(request.getParameter("Delaftale") != null){
+                                    String prodelid = request.getParameter("prodelid");
+                                        int Projdelete = Integer.parseInt(prodelid);
+                                        
+                                       String Afid= request.getParameter("Afid");
+                                        int Aftaldelete = Integer.parseInt(Afid);
+                                   
+                                  
+                                    try{
+                                        Iserv.DeleteAftale(Aftaldelete, stdnummer, Projdelete );
+                                    }catch(Exception e){
+                                        out.println("IKKE OPRETTET AF ÅRSAGER");
+                                    }
+                                }
+                        %>
+            
+            
+            
+        </form>
     </body>
 </html>
