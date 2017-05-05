@@ -28,7 +28,7 @@
          
             out.println( Iserv.login(stdnummer,pwd));
           if( Iserv.login(stdnummer,pwd)!=null) {
-      session.setAttribute("login","true");               
+      session.setAttribute("user", usrname);               
         String redirectURL ="mainpage.jsp";
         response.sendRedirect(redirectURL);
   

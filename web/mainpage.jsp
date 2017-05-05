@@ -36,9 +36,9 @@
          <%      
             
             ServerInterface Iserv = new transport.Client().lol();
-              String usrname = request.getParameter("user");
+              String usrname = (String) session.getAttribute("user");
                 List<Projekt> projlist = null;
-                int   stdnummer = 154694;    //Integer.parseInt(usrname.substring(1));
+                int   stdnummer = Integer.parseInt(usrname.substring(1));
                 try{
                 projlist= Iserv.getProjekter(stdnummer);
 
