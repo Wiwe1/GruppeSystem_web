@@ -277,6 +277,60 @@
                         %>
           
         </form>
+                        
+                 <br>
+                        Tilføj et medlem til et Projekt:
+                        <form method="get">
+                        Projekt id: <input type="text" name="proide"><br>
+                        studienummer: <input type="text" name="medist"><br>
+                            
+                        <button type="submit" onclick="onButton(prodelid.toString(),.toString())
+                        " id="create medlem" name="CreMedlem">Tilføj medlem</button>
+                            
+                        <%          
+                                if(request.getParameter("CreMedlem") != null){
+                                    String prodelid = request.getParameter("proide");
+                                    int projid = Integer.parseInt(prodelid);
+                                        
+                                    String Afid= request.getParameter("medist");
+                                    int studie = Integer.parseInt(Afid);
+                                
+                                    try{
+                                        Iserv.AddMedlem(studie, projid);
+                                    }catch(Exception e){
+                                        out.println("IKKE OPRETTET AF ÅRSAGER");
+                                    }
+                                }
+                        %>
+                        </form>
+                        
+                        </form>
+                        
+                        <br>
+                        Fjern et medlem fra et Projekt:
+                        <form method="get">
+                        Projekt id: <input type="text" name="projide"><br>
+                        studienummer: <input type="text" name="medlem"><br>
+                            
+                        <button type="submit" onclick="onButton(prodelid.toString(),.toString())
+                        " id="create medlem" name="delMedlem">Tilføj medlem</button>
+                            
+                        <%          
+                                if(request.getParameter("delMedlem") != null){
+                                    String prodelid = request.getParameter("projide");
+                                    int projid = Integer.parseInt(prodelid);
+                                        
+                                    String Afid= request.getParameter("medlem");
+                                    int studie = Integer.parseInt(Afid);
+                                
+                                    try{
+                                        Iserv.DeleteMedlem(studie, projid);
+                                    }catch(Exception e){
+                                        out.println("IKKE OPRETTET AF ÅRSAGER");
+                                    }
+                                }
+                        %>
+                        </form>       
       
             </body>
 </html>
