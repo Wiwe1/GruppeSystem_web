@@ -284,7 +284,7 @@
                         Projekt id: <input type="text" name="proide"><br>
                         studienummer: <input type="text" name="medist"><br>
                             
-                        <button type="submit" onclick="onButton(prodelid.toString(),.toString())
+                        <button type="submit" onclick="onButton(proide.toString(),medist.toString())
                         " id="create medlem" name="CreMedlem">Tilføj medlem</button>
                             
                         <%          
@@ -293,12 +293,14 @@
                                     int projid = Integer.parseInt(prodelid);
                                         
                                     String Afid= request.getParameter("medist");
+                                    Afid = Afid.substring(1);
                                     int studie = Integer.parseInt(Afid);
                                 
                                     try{
                                         Iserv.AddMedlem(studie, projid);
                                     }catch(Exception e){
                                         out.println("IKKE OPRETTET AF ÅRSAGER");
+                                        e.printStackTrace();    
                                     }
                                 }
                         %>
@@ -312,7 +314,7 @@
                         Projekt id: <input type="text" name="projide"><br>
                         studienummer: <input type="text" name="medlem"><br>
                             
-                        <button type="submit" onclick="onButton(prodelid.toString(),.toString())
+                        <button type="submit" onclick="onButton(projide.toString(),medlem.toString())
                         " id="create medlem" name="delMedlem">Tilføj medlem</button>
                             
                         <%          
@@ -321,6 +323,7 @@
                                     int projid = Integer.parseInt(prodelid);
                                         
                                     String Afid= request.getParameter("medlem");
+                                    Afid = Afid.substring(1);
                                     int studie = Integer.parseInt(Afid);
                                 
                                     try{
