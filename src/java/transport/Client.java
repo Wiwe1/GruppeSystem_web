@@ -24,7 +24,7 @@ public class Client {
     }
     
    
-     public ServerInterface lol() throws MalformedURLException {
+     public ServerInterface connect() throws MalformedURLException {
        URL url = new URL("http://ubuntu4.javabog.dk:12345/server?wsdl");
         QName qname = new QName("http://server/", "ServerImplService");
         Service service = Service.create(url, qname);

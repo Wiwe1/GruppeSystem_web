@@ -35,7 +35,7 @@
         <h1>Velkommen til dit eget lolleren gruppesys</h1>
          <%      
             
-            ServerInterface Iserv = new transport.Client().lol();
+            ServerInterface Iserv = new transport.Client().connect();
               String usrname = (String) session.getAttribute("user");
                 List<Projekt> projlist = null;
                 int   stdnummer = Integer.parseInt(usrname.substring(1));
@@ -53,13 +53,12 @@
                 int i = 0;
                 for(Projekt p : projlist){
                     List<Opgave> ol = new ArrayList<Opgave>();
-                    ol.add(new Opgave(1, "lol", "lol"));
-                    ol.add(new Opgave(1, "lol", "lol"));ol.add(new Opgave(1, "lol", "lol"));
                     
                     
                     try{
                         ol = Iserv.getOpgaver(p.getId(), stdnummer);
                     }catch(Exception e){
+                        e.printStackTrace();
                     }
                     
                     
@@ -69,6 +68,7 @@
                     try{
                         al = Iserv.getAftaler(p.getId(), stdnummer);
                     }catch(Exception e){
+                        e.printStackTrace();
                     }
                             
                     
