@@ -20,7 +20,7 @@
             String pwd = "";
             ServerInterface  Iserv = null;
             try{
-                Iserv = new transport.Client().lol();
+                Iserv = new transport.Client().connect();
             }
             catch(Exception e){
                 e.printStackTrace();

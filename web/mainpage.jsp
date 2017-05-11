@@ -27,12 +27,12 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Gruppesys</title>
+        <title>Gruppesystem</title>
        
         
     </head>
     <body>
-        <h1>Velkommen til dit eget lolleren gruppesys</h1>
+        <h1>Velkommen til gruppesystem</h1>
          <%      
             
             ServerInterface Iserv = new transport.Client().connect();
@@ -78,9 +78,11 @@
                     <br>
                     <tr>     
                     
-                        <th><% out.println("Projekt: "+ i); %></th>
-                        <th><% out.println(p.getDesc()); %></th>
+                        <th><% out.println("Projekt: "+ p.getId()); %></th>
+                         <th><% out.println(p.getGruppeNavn()); %></th>
                         <th><% out.println(p.getNavn()); %></th>
+                          <th><% out.println(p.getDesc()); %></th>
+                      
                     </tr>
                       
                     <tr>
